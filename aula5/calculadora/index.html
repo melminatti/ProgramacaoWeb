@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora</title>
+</head>
+<body>
+
+  <h2>Calculadora</h2>
+  <input type="number" id="num1" placeholder="Número 1">
+  <input type="number" id="num2" placeholder="Número 2">
+  <br>
+</br>
+<button onclick="calcular('+')">+</button>
+  <button onclick="calcular('-')">-</button>
+  <button onclick="calcular('*')">*</button>
+  <button onclick="calcular('/')">/</button>
+</br>
+
+</br>
+<div id="resultado">Resultado</div>
+
+  <script>
+    function calcular(operacao) {
+      const n1 = parseFloat(document.getElementById("num1").value);
+      const n2 = parseFloat(document.getElementById("num2").value);
+      let res = 0;
+
+      switch (operacao) {
+        case '+':
+          res = n1 + n2;
+          break;
+        case '-':
+          res = n1 - n2;
+          break;
+        case '*':
+          res = n1 * n2;
+          break;
+        case '/':
+          res = n2 !== 0 ? n1 / n2 : "Erro";
+          break;
+      }
+
+      const resultadoDiv = document.getElementById("resultado");
+      resultadoDiv.textContent = res;
+
+      // cores de fundo
+      if (res === "Erro") {
+        resultadoDiv.style.backgroundColor = "orange";
+      } else if (res > 0) {
+        resultadoDiv.style.backgroundColor = "lightgreen";
+      } else if (res < 0) {
+        resultadoDiv.style.backgroundColor = "tomato";
+      } else {
+        resultadoDiv.style.backgroundColor = "lightgray";
+      }
+    }
+  </script>
+
+</body>
+</html>
