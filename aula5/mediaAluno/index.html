@@ -8,8 +8,8 @@
     <h1> Notas </h1>
 </header>
 <body>
-    <button onclick="toggleMediaNotas()">Adicionar/Remover Médias (Colunas)</button>
-    <button onclick="toggleMediaAlunos()">Adicionar/Remover Médias (Linhas)</button>
+    <button onclick="toggleMediaNotas()">Média das Notas</button>
+    <button onclick="toggleMediaAlunos()">Média dos Alunos</button>
 
     <table border="1px" id="tabela">
         <thead>
@@ -85,13 +85,12 @@
         let mediaNotasAtiva = false;
         let mediaAlunosAtiva = false;
 
-        // Função para calcular média das colunas
         function toggleMediaNotas() {
             const tabela = document.getElementById("tabela");
             const tbody = tabela.querySelector("tbody");
 
             if (mediaNotasAtiva) {
-                tbody.deleteRow(tbody.rows.length - 1); // remove última linha (médias)
+                tbody.deleteRow(tbody.rows.length - 1);
                 mediaNotasAtiva = false;
                 return;
             }
@@ -123,7 +122,6 @@
             mediaNotasAtiva = true;
         }
 
-        // Função para calcular média das linhas
         function toggleMediaAlunos() {
             const tabela = document.getElementById("tabela");
             const tbody = tabela.querySelector("tbody");
@@ -131,11 +129,9 @@
 
             if (mediaAlunosAtiva) {
                 header.deleteCell(header.cells.length - 1);
-
                 for (let r = 0; r < tbody.rows.length; r++) {
                     tbody.rows[r].deleteCell(tbody.rows[r].cells.length - 1);
                 }
-
                 mediaAlunosAtiva = false;
                 return;
             }
