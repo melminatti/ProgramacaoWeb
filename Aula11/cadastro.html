@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Pessoa</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <div class="h1" >
+        <h1>Cadastro de Pessoa</h1>
+    </div>
+    <form action="insertpessoa.php" method="post">
+        <label for="Nome">Nome:</label>
+        <input type="text" id="Nome" name="Nome" required maxlength="100"><br><br>
+        <label for="Sobrenome">Sobrenome:</label>
+        <input type="text" id="Sobrenome" name="Sobrenome" required maxlength="100"><br><br>
+
+        <label for="Email">E-mail:</label>
+        <input type="Email" id="Email" name="Email" required><br><br>
+
+        <label for="Senha">Senha:</label>
+        <input type="Senha" id="Senha" name="Senha" required><br><br>
+
+       <label for="Cidade">Cidade:</label>
+        <input type="text" id="Cidade" name="Cidade" maxlength="200"><br><br>
+
+        <label for="Estado">Estado (UF):</label>
+        <select id="Estado" name="Estado">
+            <option value="AC">AC - Acre</option>
+                        <option value="AL">AL - Alagoas</option>
+                        <option value="AP">AP - Amapá</option>
+                        <option value="AM">AM - Amazonas</option>
+                        <option value="BA">BA - Bahia</option>
+                        <option value="CE">CE - Ceará</option>
+                        <option value="DF">DF - Distrito Federal</option>
+                        <option value="ES">ES - Espírito Santo</option>
+                        <option value="GO">GO - Goiás</option>
+                        <option value="MA">MA - Maranhão</option>
+                        <option value="MT">MT - Mato Grosso</option>
+                        <option value="MS">MS - Mato Grosso do Sul</option>
+                        <option value="MG">MG - Minas Gerais</option>
+                        <option value="PA">PA - Pará</option>
+                        <option value="PB">PB - Paraíba</option>
+                        <option value="PR">PR - Paraná</option>
+                        <option value="PE">PE - Pernambuco</option>
+                        <option value="PI">PI - Piauí</option>
+                        <option value="RJ">RJ - Rio de Janeiro</option>
+                        <option value="RN">RN - Rio Grande do Norte</option>
+                        <option value="RS">RS - Rio Grande do Sul</option>
+                        <option value="RO">RO - Rondônia</option>
+                        <option value="RR">RR - Roraima</option>
+                        <option value="SC">SC - Santa Catarina</option>
+                        <option value="SP">SP - São Paulo</option>
+                        <option value="SE">SE - Sergipe</option>
+                        <option value="TO">TO - Tocantins</option>
+        </select><br><br>
+
+        <input type="submit" value="Cadastrar">
+    </form>
+    </div>
+</body>
+</html>
