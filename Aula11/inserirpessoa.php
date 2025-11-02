@@ -31,6 +31,5 @@ if (inserirPessoa($conn, $aDados)) {
 
 echo '<br><br><a href="cadastro.html">Voltar</a>';
 
-
 pg_close($conn); 
 ?>
