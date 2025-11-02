@@ -3,3 +3,8 @@ brenda;minatti;brenda@gmail.com;12345;Rio do Sul;SC
 Raissa;Mazzi;Raissa@gmail.com.br;123;Rio do Sul;SC
 Gabriel;Souza;gabriel@gmail.com;132;Rio do Sul;SC
 mel;minatti;melissa@gmail.com;123';Rio do Sul;SC
+Ruan;Vitor;ruan@gmail.com;123;Florianopolis;SC
+Leonardo;Vieira;leonardo@gmail.com;123;Lages;SC
+Lucas;Carlos;lucas@gmail.com;123;Urubici;SC
+Diogo;Angelo;diogo@gmail.com;123';São Paolo;SP
+Alice;Cani;alice@gmail.com;123;Rio de Janeiro;RJ
