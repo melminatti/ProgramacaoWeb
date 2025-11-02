@@ -1,4 +1,5 @@
 <?php
+
 namespace app\model;
 
 class Pessoa {
@@ -56,7 +57,7 @@ class Pessoa {
         $this->sobreNome = $sobreNome;
     }
 
-    public function getDataNascimento(): ?\DateTime {
+    public function getDataNascimento() {
         return $this->dataNascimento;
     }
 
@@ -101,10 +102,51 @@ class Pessoa {
 
     public function getContatoTelefone() {
         foreach($this->contato as $contato) {
-            if ($contato->getTipo() == 2) {
+            if($contato->getTipo() == 2) {
                 return $contato->getValor();
             }
         }
         return "";
+    }
+    
+    public function toRelatorioTXT() {
+        $linha = "Nome: " . $this->nome . " " . $this->sobreNome . "\n";
+        $linha .= "Idade: " . $this->getIdade() . "\n";
+        $linha .= "Tipo: " . $this->getDescricaoTipo() . "\n";
+        $linha .= "CPF/CNPJ: " . $this->cpfCnpj . "\n";
+        $linha .= "Endereço: " . $this->endereco . "\n";
+        $linha .= "Contatos:\n";
+        
+        foreach($this->contato as $contato) {
+            $linha .= " - " . $contato->getDescricaoTipo() . ": " . $contato->getValor() . "\n";
+        }
+        
+        $linha .= "\n"; 
+        return $linha;
+    }
+
+    public function toJson() {
+        
+        $vars = [
+            'nomeCompleto' => $this->getNomeCompleto(),
+            'idade' => $this->getIdade(),
+            'descricaoTipo' => $this->getDescricaoTipo(),
+            'cpfCnpj' => $this->getCpfCnpj(),
+            'endereco' => $this->getEndereco(),
+        ];
+        
+        if ($this->dataNascimento instanceof \DateTime) {
+            $vars['dataNascimento'] = $this->dataNascimento->format('Y-m-d');
+        }
+
+        $contatos_serializados = [];
+        foreach ($this->contato as $contato) {
+            if (method_exists($contato, 'toJson')) {
+                $contatos_serializados[] = $contato->toJson();
+            }
+        }
+        $vars['contatos'] = $contatos_serializados;
+
+        return $vars;
     }
 }

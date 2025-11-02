@@ -1,7 +1,7 @@
 <?php
 namespace app\model;
     class Contato {
-        private $tipo; // 1 - Email | 2 - Telefone | 3 - Celular
+        private $tipo;
         private $nome;
         private $valor;
 
@@ -39,6 +39,14 @@ namespace app\model;
         public function setValor($valor) {
             $this->valor = $valor;
         }
-    }
 
+        public function toJson() {
+            return [
+                'tipo_id' => $this->tipo,
+                'tipo' => $this->getDescricaoTipo(),
+                'nome' => $this->nome,
+                'valor' => $this->valor
+            ];
+        }
+    }
 ?>
