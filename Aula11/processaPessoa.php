@@ -1,32 +1,44 @@
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="estilo.css">
 
 <?php
 include 'funcoes.php';
 
 $acao = $_POST['acao'] ?? '';
-$nome = $_POST['Nome'] ?? '';
-$sobrenome = $_POST['Sobrenome'] ?? '';
-$email = $_POST['Email'] ?? '';
+
+// 1. Sanitização de Entrada (Requer a função sanitizarString em funcoes.php)
+$nome = sanitizarString($_POST['Nome'] ?? '');
+$sobrenome = sanitizarString($_POST['Sobrenome'] ?? '');
+$email = $_POST['Email'] ?? ''; // Mantido para validação
 $senha = $_POST['Senha'] ?? '';
-$cidade = $_POST['Cidade'] ?? '';
-$estado = $_POST['Estado'] ?? '';
+$cidade = sanitizarString($_POST['Cidade'] ?? '');
+$estado = sanitizarString($_POST['Estado'] ?? '');
+
+// 2. Validação do E-mail (Se falhar, o script para antes de salvar)
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    die("<div class='container'><h1>Erro!</h1><p>O e-mail fornecido ($email) é inválido. Não foi possível salvar.</p><br><a href='cadastro.html'>Voltar</a></div>");
+}
+
+// Se a validação passou, sanitizamos o e-mail
+$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+
 
 $aDados = [$nome, $sobrenome, $email, $senha, $cidade, $estado];
 
 if ($acao === "Salvar no Banco") {
     $conn = conectarBanco();
+    
     if (inserirPessoa($conn, $aDados)) {
-        echo "Dados salvos no banco com sucesso!";
+        echo "<div class='container'><h1>Sucesso!</h1><p>Dados salvos no banco com sucesso!</p></div>";
     } else {
-        echo "Erro ao salvar no banco.";
+        echo "<div class='container'><h1>Erro!</h1><p>Erro ao salvar no banco.</p></p></div>";
     }
     pg_close($conn);
 
 } elseif ($acao === "Salvar em Arquivo") {
     salvarTxt($aDados);
     salvarJson($aDados);
-    echo "Dados salvos com sucesso!";
+    echo "<div class='container'><h1>Sucesso!</h1><p>Dados salvos em arquivo com sucesso!</p></div>";
 }
 
-echo '<br><br><a href="cadpessoa.html">Voltar</a>';
+echo '<br><br><a href="cadastro.html">Voltar</a>';
 ?>

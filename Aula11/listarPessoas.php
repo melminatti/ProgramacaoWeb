@@ -2,10 +2,10 @@
 include 'funcoes.php';
 $conn = conectarBanco();
 
-// Sanitiza a entrada de busca
+
 $busca = filter_input(INPUT_GET, 'busca', FILTER_SANITIZE_STRING);
 
-// Usa consulta parametrizada para evitar SQL Injection
+
 if (!empty($busca)) {
     $sql = "SELECT * FROM TBPESSOA WHERE PESNOME ILIKE $1";
     $params = ['%' . $busca . '%'];
@@ -19,7 +19,7 @@ if (!empty($busca)) {
     <label for="busca">Buscar por nome:</label>
     <input type="text" name="busca" id="busca" value="<?= htmlspecialchars($busca ?? '') ?>">
     <button type="submit">Buscar</button>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="estilo.css">
 </form>
 
 <h2>Lista de Pessoas Cadastradas</h2>

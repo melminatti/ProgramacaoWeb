@@ -2,8 +2,12 @@
 define('DB_HOST', 'localhost');
 define('DB_PORT', '5432');
 define('DB_USER', 'postgres');
-define('DB_PASS', 'Rasm@1507');
+define('DB_PASS', '231501');
 define('DB_NAME', 'local');
+
+function sanitizarString($dado) {
+    return filter_var(trim($dado), FILTER_SANITIZE_STRING);
+}
 
 function conectarBanco() {
     $connectionString = "host=" . DB_HOST .
@@ -32,6 +36,7 @@ function listarPessoas($conn) {
 }
 
 function salvarTxt($aDados) {
+
     $linha = implode(';', $aDados) . PHP_EOL;
     file_put_contents('pessoas.txt', $linha, FILE_APPEND);
 }
