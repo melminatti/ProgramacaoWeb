@@ -1,0 +1,193 @@
+/* Estilos gerais */
+body {
+    background-color: #f0f2f5;
+    display: flex;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    justify-content: center;
+}
+
+.container {
+    max-width: 800px;
+    padding: 20px;
+}
+
+.tnks-container {
+    width: 100%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 5rem;
+}
+
+/* Estilos do formulário de avaliação */
+.question-container {
+    display: none;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin: 20px auto;
+    transition: all 0.3s ease;
+}
+
+.question-container.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+/* Estilo para a escala de avaliação */
+.scale {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.scale label {
+    position: relative;
+    cursor: pointer;
+}
+
+.scale input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.scale-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    color: #333;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.scale input[type="radio"]:checked+.scale-button {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+    transform: scale(1.1);
+}
+
+/* Cores diferentes para diferentes níveis de satisfação */
+.scale-button[data-value="0"],
+.scale-button[data-value="1"],
+.scale-button[data-value="2"] {
+    border-color: #dc3545;
+}
+
+.scale-button[data-value="3"],
+.scale-button[data-value="4"],
+.scale-button[data-value="5"] {
+    border-color: #ffc107;
+}
+
+.scale-button[data-value="6"],
+.scale-button[data-value="7"] {
+    border-color: #28a745;
+}
+
+.scale-button[data-value="8"],
+.scale-button[data-value="9"],
+.scale-button[data-value="10"] {
+    border-color: #198754;
+}
+
+/* Botões de navegação */
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.btn-nav {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-prev {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+.btn-next {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-submit {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-nav:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Feedback textarea */
+.feedback-container {
+    margin-top: 20px;
+}
+
+.feedback-container textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    resize: vertical;
+    min-height: 100px;
+    font-family: inherit;
+}
+
+/* Cabeçalho */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+/* Progresso */
+.progress-container {
+    width: 100%;
+    background-color: #e9ecef;
+    border-radius: 10px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: #007bff;
+    transition: width 0.3s ease;
+}

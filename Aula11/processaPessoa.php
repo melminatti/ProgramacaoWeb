@@ -5,7 +5,6 @@ include 'funcoes.php';
 
 $acao = $_POST['acao'] ?? '';
 
-// 1. Sanitização de Entrada (Requer a função sanitizarString em funcoes.php)
 $nome = sanitizarString($_POST['Nome'] ?? '');
 $sobrenome = sanitizarString($_POST['Sobrenome'] ?? '');
 $email = $_POST['Email'] ?? ''; // Mantido para validação
@@ -13,12 +12,12 @@ $senha = $_POST['Senha'] ?? '';
 $cidade = sanitizarString($_POST['Cidade'] ?? '');
 $estado = sanitizarString($_POST['Estado'] ?? '');
 
-// 2. Validação do E-mail (Se falhar, o script para antes de salvar)
+
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     die("<div class='container'><h1>Erro!</h1><p>O e-mail fornecido ($email) é inválido. Não foi possível salvar.</p><br><a href='cadastro.html'>Voltar</a></div>");
 }
 
-// Se a validação passou, sanitizamos o e-mail
+
 $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 
 
