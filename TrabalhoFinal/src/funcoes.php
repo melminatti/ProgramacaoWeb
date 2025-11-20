@@ -14,12 +14,6 @@ function sanitize_int($v, $default = 0)
     return filter_var($v, FILTER_VALIDATE_INT, ['options' => ['default' => $default]]);
 }
 
-
-
-
-
-
-
 // Funções de Gerenciamento de Setores
 function getSetores()
 {
@@ -28,12 +22,6 @@ function getSetores()
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-/**
- * Cadastra um novo Setor no banco de dados
- * 
- * @param string $nome Nome do novo setor
- * 
- */
 function addSetor($nome)
 {
     global $pdo;
@@ -41,13 +29,6 @@ function addSetor($nome)
     return $stmt->execute([':nome' => $nome]);
 }
 
-/**
- * Atualiza um setor no banco de dados
- * 
- * @param int $id ID do setor a ser atualizado
- * @param string $nome Novo nome do setor
- * 
- */
 function updateSetor($id, $nome)
 {
     global $pdo;
@@ -55,12 +36,6 @@ function updateSetor($id, $nome)
     return $stmt->execute([':nome' => $nome, ':id' => $id]);
 }
 
-/**
- * Deleta um setor do banco de dados
- * 
- * @param int $id ID do setor a ser deletado
- * 
- */
 function deleteSetor($id)
 {
     global $pdo;
@@ -68,12 +43,6 @@ function deleteSetor($id)
     return $stmt->execute([':id' => $id]);
 }
 
-/**
- * Busca um setor pelo ID
- * 
- * @param int $id ID do setor a ser buscado
- * 
- */
 function getSetor($id)
 {
     global $pdo;

@@ -14,18 +14,6 @@ function getQuestionsActives()
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * Captura todas as perguntas do banco de dados
  * 

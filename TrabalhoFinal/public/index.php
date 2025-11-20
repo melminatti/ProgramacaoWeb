@@ -4,9 +4,7 @@ require_once __DIR__ . '/../src/funcoes.php';
 
 $perguntas = getQuestionsActives();
 $setores = getSetores();
-?> 
-
-
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
