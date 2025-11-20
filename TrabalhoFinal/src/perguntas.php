@@ -63,6 +63,9 @@ function getQuestion($id)
 
 function updateQuestion($id, $texto, $ativa)
 {
+    if ($ativa != 1)
+        $ativa = 0;
+
     global $pdo;
     $stmt = $pdo->prepare("UPDATE perguntas SET texto = :texto, ativa = :ativa WHERE id = :id");
     $stmt->execute([':texto' => $texto, ':ativa' => $ativa, ':id' => $id]);
@@ -76,6 +79,13 @@ function updateQuestion($id, $texto, $ativa)
 function deleteQuestion($id)
 {
     global $pdo;
-    $stmt = $pdo->prepare("DELETE FROM perguntas WHERE id = :id");
-    $stmt->execute([':id' => $id]);
+
+    try {
+        $stmt = $pdo->prepare("DELETE FROM perguntas WHERE id = :id");
+        $stmt->execute([':id' => $id]);
+    } catch (PDOException $e) {
+        return false;
+    }
+
+    return true;
 }

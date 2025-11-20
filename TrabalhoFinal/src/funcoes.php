@@ -39,8 +39,19 @@ function updateSetor($id, $nome)
 function deleteSetor($id)
 {
     global $pdo;
-    $stmt = $pdo->prepare("DELETE FROM setores WHERE id = :id");
-    return $stmt->execute([':id' => $id]);
+
+    try {
+        $stmt = $pdo->prepare("DELETE FROM setores WHERE id = :id");
+        $stmt->execute([':id' => $id]);
+
+        return true;
+    } catch (PDOException $e) {
+
+        if ($e->getCode() === "23503") {
+            return false;
+        }
+        return false;
+    }
 }
 
 function getSetor($id)
